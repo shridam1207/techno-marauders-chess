@@ -1,6 +1,6 @@
 const app = require("express")();
 const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, { origins: '*:*'});
 const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose
@@ -64,7 +64,7 @@ const time = {};
 const intervals = {};
 const timeintervals = {};
 
-app.use(cors({ origin:[ "https://marauders-chess.herokuapp.com" ,"http://localhost:3000" ]}));
+app.use(cors());
 
 const copyboard = () => {
     const newboard = {};
