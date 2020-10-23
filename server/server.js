@@ -1,6 +1,7 @@
 const app = require("express")();
-const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+const PORT = process.env.PORT || 4000;
+const server = app.listen(PORT);
+const io = require("socket.io").listen(server);
 const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose
@@ -64,7 +65,6 @@ const time = {};
 const intervals = {};
 const timeintervals = {};
 
-const PORT = process.env.PORT || 4000;
 app.use(express.static(__dirname + "/../build"));
 app.use(cors());
 
