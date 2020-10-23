@@ -65,7 +65,7 @@ const intervals = {};
 const timeintervals = {};
 
 const PORT = process.env.PORT || 4000;
-
+app.use(express.static(__dirname + "/../../build"));
 // app.use(cors());
 
 const copyboard = () => {
