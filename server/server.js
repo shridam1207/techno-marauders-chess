@@ -1,7 +1,7 @@
 const app = require("express")();
 const server = require("http").createServer(app);
-const io = require("socket.io")(server, { origins: '*:*'});
-const cors = require("cors");
+const io = require("socket.io")(server);
+// const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose
     .connect("mongodb+srv://Shridam:Techno20@cluster0.zrjf3.mongodb.net/marauders_chess?retryWrites=true&w=majority", {
@@ -64,7 +64,9 @@ const time = {};
 const intervals = {};
 const timeintervals = {};
 
-app.use(cors());
+const PORT = process.env.PORT || 4000;
+
+// app.use(cors());
 
 const copyboard = () => {
     const newboard = {};
@@ -308,6 +310,6 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(4000, () => {
-    console.log("listening on *:4000");
+server.listen(PORT, () => {
+    console.log("listening on *: " + PORT);
 });
