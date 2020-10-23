@@ -64,7 +64,7 @@ const time = {};
 const intervals = {};
 const timeintervals = {};
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin:[ "https://marauders-chess.herokuapp.com" ,"http://localhost:3000" ]}));
 
 const copyboard = () => {
     const newboard = {};
