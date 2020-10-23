@@ -1,7 +1,7 @@
 const app = require("express")();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, { origins: '*:*'});
-const cors = require("cors");
+//const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose
     .connect("mongodb+srv://Shridam:Techno20@cluster0.zrjf3.mongodb.net/marauders_chess?retryWrites=true&w=majority", {
@@ -64,7 +64,7 @@ const time = {};
 const intervals = {};
 const timeintervals = {};
 
-app.use(cors());
+//app.use(cors());
 
 const copyboard = () => {
     const newboard = {};
