@@ -11,7 +11,7 @@ import greenlogic from "./Board/greenlogic";
 //import wallslogicc from "./Board/wallslogicc"
 //import { render } from "@testing-library/react";
 
-const serverURI = "http://localhost:4000";
+const serverURI = "http://mserver.techniche.org";
 const sizex = 15;
 const sizey = 10;
 const initgreen= [
