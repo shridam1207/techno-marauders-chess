@@ -5,8 +5,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose
 
-//.connect("mongodb://localhost:27017/technoChess", {
     .connect("mongodb+srv://Shridam:Techno20@cluster0.zrjf3.mongodb.net/marauders_chess?retryWrites=true&w=majority", {
+
         useUnifiedTopology: true,
         useNewUrlParser: true,
     })
@@ -19,7 +19,7 @@ const Match = require("./matchs");
 const whitescore=require("./whitescore");
 const blackscore=require("./blackscore");
 
-const maxTime = 20*60 ;//* 60;
+const maxTime = 20*60 ;
 const initboard = {
     BoardState: [
         [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8],
@@ -99,9 +99,6 @@ io.on("connection", (socket) => {
             "move",
             rooms[socketIds[socket.id]].board
         );
-        if (rooms[socketIds[socket.id]].white === socket.id) {
-            console.log("he is racist");
-        }
     });
 
     socket.on("rotated", ({ board, wall }) => {
@@ -117,9 +114,6 @@ io.on("connection", (socket) => {
                 "move",
                 rooms[socketIds[socket.id]].board
             );
-            if (rooms[socketIds[socket.id]].white === socket.id) {
-                console.log("he is racist");
-            }
         }
     });
 
