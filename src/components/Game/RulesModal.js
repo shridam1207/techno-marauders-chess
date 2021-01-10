@@ -126,6 +126,10 @@ export class RulesModal extends Component {
                         button next to that board.
                       </li>
                       <li>
+                      If any room is rotated , then each of the players can't rotate the board
+                      till 1 further move.                      
+                      </li>
+                      <li>
                         Pay attention to the log message at the bottom-right of
                         the screen for the match updates.
                       </li>
