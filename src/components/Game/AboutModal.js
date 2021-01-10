@@ -5,6 +5,9 @@ import { Modal, Button } from "../../../node_modules/react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import rahul_img from "./images/rahul.jpeg";
 import atharva_img from "./images/atharva.jpeg";
+import prateek_img from "./images/prateek.jpg";
+import suhas_img from "./images/suhas.jpg";
+import yash_img from "./images/yash.jpg";
  export class AboutModal extends Component {
     constructor(props, context) {
       super(props, context);
@@ -46,7 +49,7 @@ import atharva_img from "./images/atharva.jpeg";
                               Prathik S Nayak <a href = "https://github.com/PSN221B" target="_blank" rel="noopener noreferrer"><i class = "fa fa-github"></i></a>
                               
                           </p> */}
-              <h4>Marauders' chess was one of the 3 events which were build for Technothlon 2020</h4>
+              <h4>Marauders' chess was one of the 3 online events which were build for Technothlon 2020</h4>
               <h2>Developers:</h2>
               <div class="d-flex justify-content-around">
                 
@@ -118,7 +121,7 @@ import atharva_img from "./images/atharva.jpeg";
                   </ul>
                 </div>
                 
-                {/*<div class="profile-card-2">
+                <div class="profile-card-2">
                   <img src={prateek_img} alt="Person" class="card__image"></img>
                   <p class="card__name">Prathik S Nayak</p>
                   <ul class="social-icons">
@@ -217,7 +220,7 @@ import atharva_img from "./images/atharva.jpeg";
                     </li>
                   </ul>
                 </div>
-                <div class="profile-card-2">
+                {/*<div class="profile-card-2">
                   <img src={atharva_img} alt="Person" class="card__image"></img>
                   <p class="card__name">Atharva Shrawge</p>
                   <ul class="social-icons">
