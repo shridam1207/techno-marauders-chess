@@ -76,6 +76,7 @@ io.on("connection", (socket) => {
     console.log(`${socket.id} connected`);
 
     socket.on("moved", (data) => {
+        console.log(socketIds[socket.id]+" moved");
         rooms[socketIds[socket.id]].board.BoardState = data;
         rooms[socketIds[socket.id]].board.turn = rooms[socketIds[socket.id]]
             .board.turn
@@ -89,6 +90,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("rotated", ({ board, wall }) => {
+        console.log(socketIds[socket.id]+" rotated");
         if (rooms[socketIds[socket.id]].board.rot > 1) {
             rooms[socketIds[socket.id]].board.BoardState = board;
             rooms[socketIds[socket.id]].board.walls = wall;
@@ -105,6 +107,10 @@ io.on("connection", (socket) => {
         console.log("roomid ")
         console.log(RoomId);
         console.log(rollno)
+        if (RoomId === undefined){
+            console.log("bad room id");
+            return;
+        }
         if (rooms[RoomId] === undefined) {
             rooms[RoomId] = {};
             rooms[RoomId].white = socket.id;
@@ -160,7 +166,12 @@ io.on("connection", (socket) => {
             rooms[socketIds[socket.id]].board.rot = 2;
             rooms[socketIds[socket.id]].board.gamestarted = 1;
             intervals[socketIds[socket.id]] = setInterval(() => {
-                if (rooms[socketIds[socket.id]].board.turn === 1) {
+                if(!rooms[socketIds[socket.id]]){
+                    console.log("Forced Clear")
+                    clearInterval(intervals[socketIds[socket.id]])
+                    
+                }
+                else if (rooms[socketIds[socket.id]].board.turn === 1) {
                     --timeintervals[socketIds[socket.id]].white;
                     if (timeintervals[socketIds[socket.id]].white < 1) {
                         io.to(socketIds[socket.id]).emit("ended", 0);
@@ -192,6 +203,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("disconnect", () => {
+        
         if (rooms[socketIds[socket.id]]) {
             if (rooms[socketIds[socket.id]].white === socket.id) {
                 rooms[socketIds[socket.id]].white = undefined;
@@ -201,17 +213,33 @@ io.on("connection", (socket) => {
                 rooms[socketIds[socket.id]].limit--;
             }
             if(rooms[socketIds[socket.id]].limit==0){
-                delete rooms[socketIds[socket.id]];
+                
+                console.log("about to delete")
                 clearInterval(intervals[socketIds[socket.id]])
-                delete intervals[socketIds[socket.id]];
-                delete timeintervals[socketIds[socket.id]];
+                console.log("cleared interval")
+                setTimeout(()=>{
+                    
+                    console.log("timeout")
+                    delete rooms[socketIds[socket.id]];
+                    console.log("cleared rooms")
+                    delete intervals[socketIds[socket.id]];
+                    console.log("deleted interval")
+                    delete timeintervals[socketIds[socket.id]];
+                    console.log("cleared time")
+                },1000);
+                
                 
             }
-            delete socketIds[socket.id];
+            setTimeout(()=>{
+                console.log("deteing socketid")
+                delete socketIds[socket.id];
+                console.log("cleared")
             console.log(rooms)
             console.log(socketIds)
             console.log(intervals)
             console.log(timeintervals)
+            },1500);
+            
             
         }
         
