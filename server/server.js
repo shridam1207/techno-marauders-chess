@@ -73,7 +73,8 @@ const copyboard = () => {
 };
 
 io.on("connection", (socket) => {
-    console.log(`${socket.id} connected`);
+      console.log("efgh");
+    //console.log(`${socket.id} connected`);
 
     socket.on("moved", (data) => {
         rooms[socketIds[socket.id]].board.BoardState = data;
@@ -105,6 +106,9 @@ io.on("connection", (socket) => {
         console.log("roomid ")
         console.log(RoomId);
         console.log(rollno)
+        if (RoomId === undefined){
+            console.log("abcd")
+        }
         if (rooms[RoomId] === undefined) {
             rooms[RoomId] = {};
             rooms[RoomId].white = socket.id;
