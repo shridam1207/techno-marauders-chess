@@ -37,7 +37,7 @@ import yash_img from "./images/yash.jpg";
   
           <Modal style={{opacity:1}} show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title><h1>Marauders' Chess</h1></Modal.Title>
+              <Modal.Title><h1> Marauders' Chess</h1></Modal.Title>
             </Modal.Header>
             <Modal.Body>
               {/*<h1 class="font-weight-bold text-center">Contributors</h1>

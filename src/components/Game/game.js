@@ -15,10 +15,11 @@ import blackscore from "./Board/blackscore";
 import greenlogic from "./Board/greenlogic";
 import { AboutModal } from "./AboutModal";
 import { RulesModal } from "./RulesModal";
+import techno from "./images/technothlon-full.jpg";
 //import wallslogicc from "./Board/wallslogicc"
 //import { render } from "@testing-library/react";
 
-const serverURI = "http://mserver.techniche.org";
+const serverURI = "http://localhost:4000";
 const sizex = 15;
 const sizey = 10;
 const initgreen = [
@@ -262,7 +263,10 @@ class Game extends React.Component {
                     <p className="roomid">
                         Your Room ID is <span className="code">{this.props.location.state.roomid}</span>
                     </p>
-                    <h2 className="chess">Marauders chess</h2>
+                    <img class="image" src={techno} alt="Technotholon" width="400" height="100"></img>
+                    
+          
+                    <h2 className="chess">Marauders' chess</h2>
                     <nav>
                         <AboutModal />
                         <RulesModal />
