@@ -53,9 +53,7 @@ const rooms = {};   // maps roomid to room detalils
 const intervals = {}; //contains interval function
 const timeintervals = {}; // contains time
 
-const PORT = process.env.PORT || 4000;
-// app.use(express.static(__dirname + "/../build"));
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000" }));
 
 const copyboard = () => {
     const newboard = {};
@@ -247,6 +245,6 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(PORT, () => {
-    console.log("listening on *: " + PORT);
+server.listen(4000, () => {
+    console.log("listening on *:4000");
 });
